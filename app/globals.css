@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Main";
+  src: url("../public/PPPangaia-Bold.otf");
+}
+body {
+  font-family: "Main", sans-serif;
+  background-color: rgb(24, 24, 24);
+}

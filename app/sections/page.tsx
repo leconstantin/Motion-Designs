@@ -23,7 +23,7 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <div ref={container} className="relative h-[200vh]">
+    <div ref={container} className="relative bg-white h-[200vh]">
       <Section1 scrollYProgress={scrollYProgress} />
       <Section2 scrollYProgress={scrollYProgress} />
     </div>

@@ -1,32 +1,9 @@
-"use client";
-import Lenis from "@studio-freight/lenis";
-import { AnimatePresence } from "motion/react";
-import { useEffect, useState } from "react";
-import Preloader from "@/components/Preloader/preloader";
+import Menu from "@/components/menu";
 
-export default function page() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.cursor = "default";
-      window.scrollTo(0, 0);
-    }, 2000);
-    requestAnimationFrame(raf);
-  }, []);
+export default function Page() {
   return (
-    <div>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
-      </AnimatePresence>
-      page
-    </div>
+    <main>
+      <Menu />
+    </main>
   );
 }

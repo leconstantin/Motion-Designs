@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  transform: translateY(0svh);
+  background-color: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+
+  section {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: -1;
+
+    h1 {
+      width: 75%;
+    }
+    img {
+      opacity: 0.5;
+    }
+  }
+}

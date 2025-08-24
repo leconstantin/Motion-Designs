@@ -2,9 +2,15 @@
 import Lenis from "@studio-freight/lenis";
 import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
+import DescriptionText from "@/components/Description/desc";
+import Description from "@/components/description";
+import Footer from "@/components/footer";
+import Intro from "@/components/intro";
 import Preloader from "@/components/Preloader/preloader";
+import Section from "@/components/section";
+import ZoomParallax from "@/components/zoomParallax";
 
-export default function page() {
+export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,19 +20,28 @@ export default function page() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
+
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = "default";
       window.scrollTo(0, 0);
     }, 2000);
+
     requestAnimationFrame(raf);
   }, []);
+
   return (
-    <div>
+    <main className="bg-white">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
-      page
-    </div>
+      <Intro />
+      <Description />
+      <Section />
+      <ZoomParallax />
+      <DescriptionText />
+      <div className="h-screen"></div>
+      <Footer />
+    </main>
   );
 }

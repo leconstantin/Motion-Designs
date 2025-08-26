@@ -31,7 +31,7 @@ export default function FloatingImages() {
 
   const speed = 0.01;
 
-  const manageMouseMove = (e: MouseEvent) => {
+  const manageMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const { movementX, movementY } = e;
 
     xForce += movementX * speed;
@@ -43,7 +43,7 @@ export default function FloatingImages() {
     }
   };
 
-  const lerp = (start, target, amount) =>
+  const lerp = (start: number, target: number, amount: number) =>
     start * (1 - amount) + target * amount;
 
   const animate = () => {
@@ -67,10 +67,12 @@ export default function FloatingImages() {
 
     if (Math.abs(yForce) < 0.01) yForce = 0;
 
-    if (xForce != 0 || yForce != 0) {
+    if (xForce !== 0 || yForce !== 0) {
       requestAnimationFrame(animate);
     } else {
-      cancelAnimationFrame(requestAnimationFrameId);
+      if (requestAnimationFrameId !== null) {
+        cancelAnimationFrame(requestAnimationFrameId);
+      }
 
       requestAnimationFrameId = null;
     }

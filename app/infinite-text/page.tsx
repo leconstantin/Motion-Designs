@@ -2,27 +2,26 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 export default function Home() {
   const firstText = useRef<HTMLParagraphElement>(null);
   const secondText = useRef<HTMLParagraphElement>(null);
   const slider = useRef<HTMLDivElement>(null);
+  const xPercent = useRef(0);
+  const direction = useRef(-1);
 
-  let xPercent = 0;
-  let direction = -1;
-
-  const animate = () => {
-    if (xPercent < -100) {
-      xPercent = 0;
-    } else if (xPercent > 0) {
-      xPercent = -100;
+  const animate = useCallback(() => {
+    if (xPercent.current < -100) {
+      xPercent.current = 0;
+    } else if (xPercent.current > 0) {
+      xPercent.current = -100;
     }
-    gsap.set(firstText.current, { xPercent: xPercent });
-    gsap.set(secondText.current, { xPercent: xPercent });
+    gsap.set(firstText.current, { xPercent: xPercent.current });
+    gsap.set(secondText.current, { xPercent: xPercent.current });
     requestAnimationFrame(animate);
-    xPercent += 0.1 * direction;
-  };
+    xPercent.current += 0.1 * direction.current;
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -33,13 +32,13 @@ export default function Home() {
         start: 0,
         end: window.innerHeight,
         onUpdate: (e) => {
-          direction = e.direction * -1;
+          direction.current = e.direction * -1;
         },
       },
       x: "-500px",
     });
     requestAnimationFrame(animate);
-  }, [slider]);
+  }, [animate]);
 
   return (
     <main className="bg-white relative flex h-screen mb-[100vh] overflow-hidden">

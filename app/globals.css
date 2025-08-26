@@ -155,10 +155,10 @@ h1 {
   line-height: 1;
 }
 
-p {
+/* p {
   font-size: 0.95rem;
   font-weight: 500;
-}
+} */
 
 a {
   text-decoration: none;

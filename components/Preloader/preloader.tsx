@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { opacity, slideUp } from "./anim";
+
 // import { opacity, slideUp } from "./anim";
-import styles from "./style.module.scss";
+// import styles from "./style.module.scss";
 
 const words = [
   "Hello",
@@ -56,20 +57,26 @@ export default function Preloader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className={styles.introduction}
+      className="h-screen w-screen fixed flex bg-white items-center justify-center  z-99"
     >
       {dimension.width > 0 && (
         <>
-          <motion.p variants={opacity} initial="initial" animate="enter">
-            <span></span>
+          <motion.p
+            variants={opacity}
+            initial="initial"
+            animate="enter"
+            className="flex text-black items-center absolute z-10 text-9xl "
+          >
+            <span className="block size-2.5 bg-black rounded-full mr-2.5"></span>
             {words[index]}
           </motion.p>
-          <svg>
+          <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
             <title>Wave</title>
             <motion.path
               variants={curve}
               initial="initial"
               exit="exit"
+              className="fill-white"
             ></motion.path>
           </svg>
         </>

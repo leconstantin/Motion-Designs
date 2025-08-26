@@ -10,25 +10,11 @@ export default function Intro() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0vh", "120vh"]);
+  // you can change 120vh to see different results
 
   return (
-    // i want bg from blue yellow to green
-    <div className="h-screen   overflow-hidden ">
-      {/* <div className="fixed top-0 left-0 flex h-screen w-full">
-        <motion.div
-          style={{ backgroundColor: "blue" }}
-          className="h-screen w-1/3"
-        ></motion.div>
-        <motion.div
-          style={{ backgroundColor: "yellow" }}
-          className="h-screen w-1/3"
-        ></motion.div>
-        <motion.div
-          style={{ backgroundColor: "green" }}
-          className="h-screen w-1/3"
-        ></motion.div>
-      </div> */}
+    <div className="h-screen  overflow-hidden ">
       <motion.div style={{ y }} className="relative h-full" ref={container}>
         <Image
           src={Background}

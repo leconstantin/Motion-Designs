@@ -4,6 +4,7 @@ import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import DescriptionText from "@/components/Description/desc";
 import Description from "@/components/description";
+import FloatingImagesComponent from "@/components/floating/floating-images";
 import Footer from "@/components/footer";
 import Intro from "@/components/intro";
 import Preloader from "@/components/Preloader/preloader";
@@ -40,6 +41,9 @@ export default function Home() {
       <Section />
       <ZoomParallax />
       <DescriptionText />
+      <div className="relative overflow-x-hidden">
+        <FloatingImagesComponent />
+      </div>
       <div className="h-screen"></div>
       <Footer />
     </main>

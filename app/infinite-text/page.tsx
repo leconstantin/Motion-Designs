@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import styles from "./page.module.css";
 
 export default function Home() {
   const firstText = useRef<HTMLParagraphElement>(null);
@@ -33,20 +32,37 @@ export default function Home() {
         scrub: 0.25,
         start: 0,
         end: window.innerHeight,
-        onUpdate: (e) => (direction = e.direction * -1),
+        onUpdate: (e) => {
+          direction = e.direction * -1;
+        },
       },
       x: "-500px",
     });
     requestAnimationFrame(animate);
-  }, []);
+  }, [slider]);
 
   return (
-    <main className={styles.main}>
-      <Image src="/images/1.jpg" fill={true} alt="background" />
-      <div className={styles.sliderContainer}>
-        <div ref={slider} className={styles.slider}>
-          <p ref={firstText}>Welcome in Rwanda -</p>
-          <p ref={secondText}>Welcome in Rwanda -</p>
+    <main className="bg-white relative flex h-screen mb-[100vh] overflow-hidden">
+      <Image
+        src="/images/1.jpg"
+        fill={true}
+        alt="background"
+        className="object-cover"
+      />
+      <div className="absolute top-[calc(100vh-300px)]">
+        <div ref={slider} className="relative whitespace-nowrap">
+          <p
+            ref={firstText}
+            className="relative m-0 text-white text-7xl lg:text-[230px] pr-[50px] font-medium"
+          >
+            Welcome in Rwanda -
+          </p>
+          <p
+            ref={secondText}
+            className="absolute left-full top-0 m-0 text-7xl text-white lg:text-[230px] pr-[50px] font-medium"
+          >
+            Welcome in Rwanda -
+          </p>
         </div>
       </div>
     </main>

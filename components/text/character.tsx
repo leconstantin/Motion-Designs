@@ -5,7 +5,6 @@ import {
   useTransform,
 } from "motion/react";
 import { useRef } from "react";
-import styles from "./style.module.scss";
 
 export default function ParagraphCharacter({
   paragraph,
@@ -20,7 +19,10 @@ export default function ParagraphCharacter({
 
   const words = paragraph.split(" ");
   return (
-    <p ref={container} className={styles.paragraph}>
+    <p
+      ref={container}
+      className="flex text-[60px] p-10 leading-16 max-w-[1280px] flex-wrap text-white"
+    >
       {words.map((word, i) => {
         const start = i / words.length;
         const end = start + 1 / words.length;
@@ -46,7 +48,7 @@ const Word = ({
   const amount = range[1] - range[0];
   const step = amount / children.length;
   return (
-    <span className={styles.word}>
+    <span className="relative mt-3 mr-3">
       {children.split("").map((char, i) => {
         const start = range[0] + i * step;
         const end = range[0] + (i + 1) * step;
@@ -72,7 +74,7 @@ const Char = ({
   const opacity = useTransform(progress, range, [0, 1]);
   return (
     <span>
-      <span className={styles.shadow}>{children}</span>
+      <span className="absolute opacity-20">{children}</span>
       <motion.span style={{ opacity: opacity }}>{children}</motion.span>
     </span>
   );

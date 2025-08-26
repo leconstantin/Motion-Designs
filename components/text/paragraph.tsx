@@ -1,7 +1,6 @@
 "use client";
 import { motion, useScroll } from "motion/react";
 import { useRef } from "react";
-import styles from "./style.module.scss";
 
 export default function Paragraph({ paragraph }: { paragraph: string }) {
   const container = useRef<HTMLParagraphElement>(null);
@@ -13,7 +12,7 @@ export default function Paragraph({ paragraph }: { paragraph: string }) {
   return (
     <motion.p
       ref={container}
-      className={styles.paragraph}
+      className="flex text-[60px] leading-16 p-10 max-w-[1280px] flex-wrap text-white"
       style={{ opacity: scrollYProgress }}
     >
       {paragraph}
